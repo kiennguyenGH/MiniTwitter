@@ -1,12 +1,13 @@
 public class User {
     
     private String ID;
-    private Follower following;
-
+    private Follower followers;
+    
+            
     public User(String ID)
     {
         this.ID = ID;
-        following = new Follower();
+        followers = new Follower();
     }
     
     public String getID()

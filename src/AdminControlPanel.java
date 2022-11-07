@@ -1,9 +1,14 @@
+import java.util.HashMap;
 public class AdminControlPanel extends javax.swing.JFrame {
-
+    
+    
+    
+    
     /**
      * Creates new form AdminControlPanel
      */
     
+    private static HashMap<String, User> users = null;
     private static AdminControlPanel instance = null;
     
     public static AdminControlPanel getInstance()
@@ -12,6 +17,10 @@ public class AdminControlPanel extends javax.swing.JFrame {
         {
             instance = new AdminControlPanel();
         }
+        if (users == null)
+        {
+            users = new HashMap<>();
+        } 
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new AdminControlPanel().setVisible(true);
@@ -21,6 +30,11 @@ public class AdminControlPanel extends javax.swing.JFrame {
     }
     private AdminControlPanel() {
         initComponents();
+    }
+    
+    private void addUser(User user)
+    {
+        users.put(user.getID(),user);
     }
 
     /**

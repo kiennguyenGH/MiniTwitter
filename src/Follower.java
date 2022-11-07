@@ -7,15 +7,15 @@ public class Follower {
         following = new HashMap<String, User>();
     }
     
-    public void addFollower(String ID, User user)
+    public void addFollower(User user)
     {
-       if (following.containsKey(ID))
+       if (following.containsKey(user.getID()))
        {
             return;
        }
        else
        {
-            following.put(ID, user);
+            following.put(user.getID(), user);
        }
     }
 }
