@@ -4,7 +4,7 @@ public class AdminControlPanel extends javax.swing.JFrame {
      * Creates new form AdminControlPanel
      */
     
-    private static AdminControlPanel instance = new AdminControlPanel();
+    private static AdminControlPanel instance = null;
     
     public static AdminControlPanel getInstance()
     {
