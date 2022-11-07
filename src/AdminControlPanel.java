@@ -1,9 +1,6 @@
 import java.util.HashMap;
 public class AdminControlPanel extends javax.swing.JFrame {
     
-    
-    
-    
     /**
      * Creates new form AdminControlPanel
      */
@@ -34,7 +31,15 @@ public class AdminControlPanel extends javax.swing.JFrame {
     
     private void addUser(User user)
     {
-        users.put(user.getID(),user);
+        users.put(user.getID(),user);   
+    }
+    
+    private void printMap()
+    {
+        for (User i: users. values())
+        {
+            System.out.println(i.getID());
+        }
     }
 
     /**
@@ -57,6 +62,8 @@ public class AdminControlPanel extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jList1 = new javax.swing.JList<>();
+        PrintHashMap = new javax.swing.JButton();
+        AnalysisText = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -82,8 +89,18 @@ public class AdminControlPanel extends javax.swing.JFrame {
         });
 
         btnShowUserTotal.setText("Button - Show User Total");
+        btnShowUserTotal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnShowUserTotalActionPerformed(evt);
+            }
+        });
 
         tfUserID.setText("TextArea - User ID");
+        tfUserID.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tfUserIDActionPerformed(evt);
+            }
+        });
 
         tfGroupID.setText("TextArea - Group ID");
         tfGroupID.addActionListener(new java.awt.event.ActionListener() {
@@ -105,6 +122,13 @@ public class AdminControlPanel extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jList1);
 
+        PrintHashMap.setText("PrintHashMap");
+        PrintHashMap.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PrintHashMapActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -122,16 +146,22 @@ public class AdminControlPanel extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(btnAddUser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btnAddGroup, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(btnOpenUserView, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButton1)
-                            .addComponent(btnShowUserTotal, javax.swing.GroupLayout.DEFAULT_SIZE, 191, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnShowGroupTotal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(btnOpenUserView, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jButton1)
+                                    .addComponent(btnShowUserTotal, javax.swing.GroupLayout.DEFAULT_SIZE, 191, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btnShowGroupTotal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(PrintHashMap)
+                                .addGap(18, 18, 18)
+                                .addComponent(AnalysisText, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -150,7 +180,13 @@ public class AdminControlPanel extends javax.swing.JFrame {
                             .addComponent(tfGroupID))
                         .addGap(18, 18, 18)
                         .addComponent(btnOpenUserView, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(99, 99, 99)
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(PrintHashMap)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(3, 3, 3)
+                                .addComponent(AnalysisText, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnShowUserTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnShowGroupTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -164,8 +200,12 @@ public class AdminControlPanel extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    // Add user to global list of users
     private void btnAddUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddUserActionPerformed
-        // TODO add your handling code here:
+        if (tfUserID.getText().length() > 0)
+        {
+            addUser(new User(tfUserID.getText()));
+        }
     }//GEN-LAST:event_btnAddUserActionPerformed
 
     private void btnOpenUserViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOpenUserViewActionPerformed
@@ -179,6 +219,23 @@ public class AdminControlPanel extends javax.swing.JFrame {
     private void tfGroupIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfGroupIDActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_tfGroupIDActionPerformed
+
+    private void tfUserIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfUserIDActionPerformed
+        if (tfUserID.getText().length() > 0)
+        {
+            addUser(new User(tfUserID.getText()));
+        }
+    }//GEN-LAST:event_tfUserIDActionPerformed
+
+    private void PrintHashMapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PrintHashMapActionPerformed
+        printMap();
+    }//GEN-LAST:event_PrintHashMapActionPerformed
+
+    private void btnShowUserTotalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShowUserTotalActionPerformed
+        String text = "";
+        text += users.size();
+        AnalysisText.setText(text);
+    }//GEN-LAST:event_btnShowUserTotalActionPerformed
 
     /**
      * @param args the command line arguments
@@ -212,6 +269,8 @@ public class AdminControlPanel extends javax.swing.JFrame {
 //    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel AnalysisText;
+    private javax.swing.JButton PrintHashMap;
     private javax.swing.JButton btnAddGroup;
     private javax.swing.JButton btnAddUser;
     private javax.swing.JButton btnOpenUserView;
