@@ -7,6 +7,7 @@ public class AdminControlPanel extends javax.swing.JFrame {
     
     private static HashMap<String, User> users = null;
     private static AdminControlPanel instance = null;
+    private static UserGroup root = null;
     
     public static AdminControlPanel getInstance()
     {
@@ -18,6 +19,10 @@ public class AdminControlPanel extends javax.swing.JFrame {
         {
             users = new HashMap<String, User>();
         } 
+        if (root == null)
+        {
+            root = new UserGroup("root");
+        }
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new AdminControlPanel().setVisible(true);
