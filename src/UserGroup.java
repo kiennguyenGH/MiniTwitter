@@ -1,8 +1,7 @@
-import java.util.List;
-import java.util.ArrayList;
+import java.util.HashMap;
 public class UserGroup implements CompositeUser{
     private String ID;
-    private List<CompositeUser> userGroup = new ArrayList<CompositeUser>();
+    private HashMap<String, CompositeUser> userGroup = new HashMap<String, CompositeUser>();
     public UserGroup(String ID)
     {
         this.ID = ID;
@@ -14,7 +13,17 @@ public class UserGroup implements CompositeUser{
     
     public void addUser(CompositeUser user)
     {
-        userGroup.add(user);
+        userGroup.put(user.getID(),user);
+    }
+
+    @Override
+    public void displayID() {
+        System.out.println(ID);
+    }
+
+    @Override
+    public String getID() {
+        return ID;  
     }
     
 }

@@ -10,6 +10,7 @@ public class User implements CompositeUser{
         followers = new Follower();
     }
     
+    @Override
     public String getID()
     {
         return ID;
@@ -28,5 +29,10 @@ public class User implements CompositeUser{
     @Override
     public void displayUser() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public void displayID() {
+        System.out.println(ID);
     }
 }

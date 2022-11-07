@@ -6,6 +6,7 @@ public class AdminControlPanel extends javax.swing.JFrame {
      */
     
     private static HashMap<String, User> users = null;
+    private static HashMap<String, CompositeUser> userList = null;
     private static AdminControlPanel instance = null;
     private static UserGroup root = null;
     
@@ -18,7 +19,11 @@ public class AdminControlPanel extends javax.swing.JFrame {
         if (users == null)
         {
             users = new HashMap<String, User>();
-        } 
+        }
+        if (userList == null)
+        {
+            userList = new HashMap<String, CompositeUser>();
+        }
         if (root == null)
         {
             root = new UserGroup("root");
@@ -34,16 +39,16 @@ public class AdminControlPanel extends javax.swing.JFrame {
         initComponents();
     }
     
-    private void addUser(User user)
+    private void addUser(CompositeUser user)
     {
-        users.put(user.getID(),user);   
+        userList.put(user.getID(),user);   
     }
     
     private void printMap()
     {
-        for (User i: users. values())
+        for (CompositeUser i: userList.values())
         {
-            System.out.println(i.getID());
+            i.displayID();
         }
     }
 
@@ -66,7 +71,7 @@ public class AdminControlPanel extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<>();
+        UserList = new javax.swing.JList<>();
         PrintHashMap = new javax.swing.JButton();
         AnalysisText = new javax.swing.JLabel();
 
@@ -120,12 +125,7 @@ public class AdminControlPanel extends javax.swing.JFrame {
 
         jButton2.setText("<html>Button - Show<ba>\nPositive Percentage");
 
-        jList1.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        jScrollPane1.setViewportView(jList1);
+        jScrollPane1.setViewportView(UserList);
 
         PrintHashMap.setText("PrintHashMap");
         PrintHashMap.addActionListener(new java.awt.event.ActionListener() {
@@ -276,6 +276,7 @@ public class AdminControlPanel extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel AnalysisText;
     private javax.swing.JButton PrintHashMap;
+    private javax.swing.JList<String> UserList;
     private javax.swing.JButton btnAddGroup;
     private javax.swing.JButton btnAddUser;
     private javax.swing.JButton btnOpenUserView;
@@ -283,7 +284,6 @@ public class AdminControlPanel extends javax.swing.JFrame {
     private javax.swing.JButton btnShowUserTotal;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JList<String> jList1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField tfGroupID;
     private javax.swing.JTextField tfUserID;
