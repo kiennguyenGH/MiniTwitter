@@ -16,7 +16,7 @@ public class AdminControlPanel extends javax.swing.JFrame {
         }
         if (users == null)
         {
-            users = new HashMap<>();
+            users = new HashMap<String, User>();
         } 
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
