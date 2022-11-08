@@ -200,6 +200,8 @@ public class AdminControlPanel extends javax.swing.JFrame {
         if (selectedNode.getAllowsChildren())
         {
             User newUser = new User(tfUserID.getText());
+            UserGroup parent = (UserGroup) selectedNode.getUserObject();
+            parent.addUser(newUser);
             DefaultMutableTreeNode newNode = new DefaultMutableTreeNode(newUser, newUser.getAllowsChildren());
             selectedNode.add(newNode);
             DefaultTreeModel model = (DefaultTreeModel) List.getModel();
@@ -213,7 +215,18 @@ public class AdminControlPanel extends javax.swing.JFrame {
     }//GEN-LAST:event_btnOpenUserViewActionPerformed
 
     private void btnAddGroupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddGroupActionPerformed
-
+        DefaultMutableTreeNode selectedNode = (DefaultMutableTreeNode) List.getSelectionPath().getLastPathComponent();
+        if (selectedNode.getAllowsChildren())
+        {
+            UserGroup newUser = new UserGroup(tfGroupID.getText());
+            UserGroup parent = (UserGroup) selectedNode.getUserObject();
+            parent.addUser(newUser);
+            DefaultMutableTreeNode newNode = new DefaultMutableTreeNode(newUser, newUser.getAllowsChildren());
+            selectedNode.add(newNode);
+            DefaultTreeModel model = (DefaultTreeModel) List.getModel();
+            model.reload();
+            
+        }
     }//GEN-LAST:event_btnAddGroupActionPerformed
 
     private void tfGroupIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfGroupIDActionPerformed
