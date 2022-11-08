@@ -1,4 +1,6 @@
-public class User implements CompositeUser{
+import javax.swing.tree.DefaultMutableTreeNode;
+
+public class User extends DefaultMutableTreeNode implements CompositeUser{
     
     private String ID;
     private Follower followers;
@@ -8,6 +10,7 @@ public class User implements CompositeUser{
     {
         this.ID = ID;
         followers = new Follower();
+//        this.follow(this);
     }
     
     @Override
@@ -25,17 +28,16 @@ public class User implements CompositeUser{
     {
         user.getFollowers().addFollower(this);
     }
-
+    
     @Override
-    public void addUser(CompositeUser user) {
-        return;
-    }
-
-    @Override
-    public boolean isComposite() {
+    public boolean getAllowsChildren()
+    {
         return false;
     }
-
-
-
+    
+    @Override
+    public String toString()
+    {
+        return ID;
+    }
 }

@@ -12,6 +12,10 @@ public class AdminControlPanel extends javax.swing.JFrame {
     
     public static AdminControlPanel getInstance()
     {
+        if (root == null)
+        {
+            root = new UserGroup("root");
+        }
         if (instance == null)
         {
             instance = new AdminControlPanel();
@@ -113,7 +117,7 @@ public class AdminControlPanel extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.tree.DefaultMutableTreeNode treeNode1 = new javax.swing.tree.DefaultMutableTreeNode("root");
+        javax.swing.tree.DefaultMutableTreeNode treeNode1 = new javax.swing.tree.DefaultMutableTreeNode(root, root.getAllowsChildren());
         List.setModel(new javax.swing.tree.DefaultTreeModel(treeNode1));
         jScrollPane2.setViewportView(List);
 
@@ -193,7 +197,15 @@ public class AdminControlPanel extends javax.swing.JFrame {
     // Add user to global list of users
     private void btnAddUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddUserActionPerformed
         DefaultMutableTreeNode selectedNode = (DefaultMutableTreeNode) List.getSelectionPath().getLastPathComponent();
-        DefaultMutableTreeNode newNode = new DefaultMutableTreeNode();
+        if (selectedNode.getAllowsChildren())
+        {
+            User newUser = new User(tfUserID.getText());
+            DefaultMutableTreeNode newNode = new DefaultMutableTreeNode(newUser, newUser.getAllowsChildren());
+            selectedNode.add(newNode);
+            DefaultTreeModel model = (DefaultTreeModel) List.getModel();
+            model.reload();
+            
+        }
     }//GEN-LAST:event_btnAddUserActionPerformed
 
     private void btnOpenUserViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOpenUserViewActionPerformed

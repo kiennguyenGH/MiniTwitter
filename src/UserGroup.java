@@ -1,5 +1,6 @@
 import java.util.HashMap;
-public class UserGroup implements CompositeUser{
+import javax.swing.tree.DefaultMutableTreeNode;
+public class UserGroup extends DefaultMutableTreeNode implements CompositeUser{
     private String ID;
     private HashMap<String, CompositeUser> userGroup = new HashMap<String, CompositeUser>();
     public UserGroup(String ID)
@@ -7,10 +8,15 @@ public class UserGroup implements CompositeUser{
         this.ID = ID;
     }
     
-    @Override
     public void addUser(CompositeUser user)
     {
         userGroup.put(user.getID(),user);
+    }
+    
+    @Override
+    public boolean getAllowsChildren()
+    {
+        return true;
     }
     
     public HashMap<String, CompositeUser> getUserGroup()
@@ -23,10 +29,11 @@ public class UserGroup implements CompositeUser{
     public String getID() {
         return ID;  
     }
-
+    
     @Override
-    public boolean isComposite() {
-        return true;
+    public String toString()
+    {
+        return ID;
     }
 
 
