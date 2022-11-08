@@ -1,5 +1,5 @@
 public interface CompositeUser {
-    public void displayUser();
-    public void displayID();
     public String getID();
+    public void addUser(CompositeUser user);
+    public boolean isComposite();
 }

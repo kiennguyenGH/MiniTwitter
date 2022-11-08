@@ -6,24 +6,28 @@ public class UserGroup implements CompositeUser{
     {
         this.ID = ID;
     }
-    @Override
-    public void displayUser() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
     
+    @Override
     public void addUser(CompositeUser user)
     {
         userGroup.put(user.getID(),user);
     }
-
-    @Override
-    public void displayID() {
-        System.out.println(ID);
+    
+    public HashMap<String, CompositeUser> getUserGroup()
+    {
+        return userGroup;
     }
+
 
     @Override
     public String getID() {
         return ID;  
     }
-    
+
+    @Override
+    public boolean isComposite() {
+        return true;
+    }
+
+
 }

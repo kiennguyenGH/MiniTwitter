@@ -21,18 +21,21 @@ public class User implements CompositeUser{
         return followers;
     }
 
-    public void follow(String ID)
+    public void follow(User user)
     {
-        // following.addFollower(ID,)
+        user.getFollowers().addFollower(this);
     }
 
     @Override
-    public void displayUser() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public void addUser(CompositeUser user) {
+        return;
     }
 
     @Override
-    public void displayID() {
-        System.out.println(ID);
+    public boolean isComposite() {
+        return false;
     }
+
+
+
 }
