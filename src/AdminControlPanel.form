@@ -54,8 +54,7 @@
                               </Group>
                           </Group>
                           <Group type="102" attributes="0">
-                              <Component id="PrintHashMap" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="123" max="-2" attributes="0"/>
                               <Component id="AnalysisText" min="-2" pref="240" max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -83,14 +82,8 @@
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="btnOpenUserView" min="-2" pref="57" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="PrintHashMap" min="-2" max="-2" attributes="0"/>
-                          <Group type="102" attributes="0">
-                              <EmptySpace min="3" pref="3" max="-2" attributes="0"/>
-                              <Component id="AnalysisText" min="-2" pref="60" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
+                      <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+                      <Component id="AnalysisText" min="-2" pref="60" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="btnShowUserTotal" alignment="3" min="-2" pref="44" max="-2" attributes="0"/>
@@ -178,14 +171,6 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="&lt;html&gt;Button - Show&lt;ba&gt;&#xa;Positive Percentage"/>
       </Properties>
-    </Component>
-    <Component class="javax.swing.JButton" name="PrintHashMap">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="PrintHashMap"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="PrintHashMapActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="AnalysisText">
     </Component>

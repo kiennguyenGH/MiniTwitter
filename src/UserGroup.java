@@ -1,8 +1,8 @@
-import java.util.HashMap;
+import java.util.ArrayList;
 import javax.swing.tree.DefaultMutableTreeNode;
 public class UserGroup extends DefaultMutableTreeNode implements CompositeUser{
     private String ID;
-    private HashMap<String, CompositeUser> userGroup = new HashMap<String, CompositeUser>();
+    private ArrayList<CompositeUser> userGroup = new ArrayList<CompositeUser>();
     public UserGroup(String ID)
     {
         this.ID = ID;
@@ -10,7 +10,7 @@ public class UserGroup extends DefaultMutableTreeNode implements CompositeUser{
     
     public void addUser(CompositeUser user)
     {
-        userGroup.put(user.getID(),user);
+        userGroup.add(user);
     }
     
     @Override
@@ -19,7 +19,7 @@ public class UserGroup extends DefaultMutableTreeNode implements CompositeUser{
         return true;
     }
     
-    public HashMap<String, CompositeUser> getUserGroup()
+    public ArrayList<CompositeUser> getUserGroup()
     {
         return userGroup;
     }
