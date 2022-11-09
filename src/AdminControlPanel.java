@@ -108,7 +108,7 @@ public class AdminControlPanel extends javax.swing.JFrame {
 
         btnShowPositive.setText("<html>Button - Show<ba>\nPositive Percentage");
 
-        javax.swing.tree.DefaultMutableTreeNode treeNode1 = new javax.swing.tree.DefaultMutableTreeNode("root");
+        javax.swing.tree.DefaultMutableTreeNode treeNode1 = new javax.swing.tree.DefaultMutableTreeNode(root);
         List.setModel(new javax.swing.tree.DefaultTreeModel(treeNode1));
         jScrollPane2.setViewportView(List);
 
