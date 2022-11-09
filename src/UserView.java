@@ -1,3 +1,7 @@
+
+import javax.swing.DefaultListModel;
+import javax.swing.tree.DefaultMutableTreeNode;
+
 public class UserView extends javax.swing.JFrame {
 
     
@@ -6,6 +10,7 @@ public class UserView extends javax.swing.JFrame {
     public UserView(User user) {
         this.user = user;
         initComponents();
+        System.out.println("User " + user + " opened.");
     }
 
     /**
@@ -36,6 +41,11 @@ public class UserView extends javax.swing.JFrame {
         });
 
         btnFollowUser.setText("Button - Follow User");
+        btnFollowUser.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFollowUserActionPerformed(evt);
+            }
+        });
 
         FollowList.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "<HTML><U>List View (Current Following)</HTML>" };
@@ -48,11 +58,6 @@ public class UserView extends javax.swing.JFrame {
 
         btnPostTweet.setText("Button - Post Tweet");
 
-        jList2.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
         jScrollPane2.setViewportView(jList2);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -66,10 +71,10 @@ public class UserView extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(tfTweetMessage, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnPostTweet, javax.swing.GroupLayout.DEFAULT_SIZE, 183, Short.MAX_VALUE))
+                        .addComponent(btnPostTweet, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addComponent(jScrollPane1)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(tfUserID)
+                        .addComponent(tfUserID, javax.swing.GroupLayout.DEFAULT_SIZE, 205, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnFollowUser, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
@@ -88,8 +93,8 @@ public class UserView extends javax.swing.JFrame {
                     .addComponent(tfTweetMessage)
                     .addComponent(btnPostTweet, javax.swing.GroupLayout.DEFAULT_SIZE, 46, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 146, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
@@ -98,6 +103,13 @@ public class UserView extends javax.swing.JFrame {
     private void tfUserIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfUserIDActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_tfUserIDActionPerformed
+
+    private void btnFollowUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFollowUserActionPerformed
+        user.follow(tfUserID.getText());
+//        DefaultListModel<String> model = new DefaultListModel<>();
+//        model.addElement(tfUserID.getText());
+//        FollowList.setModel(model);
+    }//GEN-LAST:event_btnFollowUserActionPerformed
 
     /**
      * @param args the command line arguments

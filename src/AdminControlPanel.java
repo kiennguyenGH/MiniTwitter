@@ -185,14 +185,15 @@ public class AdminControlPanel extends javax.swing.JFrame {
         DefaultMutableTreeNode selectedNode = (DefaultMutableTreeNode) List.getSelectionPath().getLastPathComponent();
         if (selectedNode.getAllowsChildren() && !tfUserID.getText().isEmpty())
         {
-            User newUser = new User(tfUserID.getText());
+            DefaultTreeModel model = (DefaultTreeModel) List.getModel();
+            DefaultMutableTreeNode rootNode = (DefaultMutableTreeNode) model.getRoot();
+            User newUser = new User(tfUserID.getText(), rootNode);
             UserGroup parent = (UserGroup) selectedNode.getUserObject();
             parent.addUser(newUser);
             DefaultMutableTreeNode newNode = new DefaultMutableTreeNode(newUser, newUser.getAllowsChildren());
             selectedNode.add(newNode);
-            DefaultTreeModel model = (DefaultTreeModel) List.getModel();
+//            DefaultTreeModel model = (DefaultTreeModel) List.getModel();
             model.reload();
-            
         }
     }//GEN-LAST:event_btnAddUserActionPerformed
 
