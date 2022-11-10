@@ -1,5 +1,7 @@
+import javax.swing.text.Position;
 import javax.swing.tree.DefaultTreeModel;
 import javax.swing.tree.DefaultMutableTreeNode;
+import javax.swing.tree.TreePath;
 public class AdminControlPanel extends javax.swing.JFrame {
     
     /**
@@ -182,14 +184,38 @@ public class AdminControlPanel extends javax.swing.JFrame {
             {
                 DefaultTreeModel model = (DefaultTreeModel) List.getModel();
                 DefaultMutableTreeNode rootNode = (DefaultMutableTreeNode) model.getRoot();
-                User newUser = new User(tfUserID.getText(), rootNode);
-                UserGroup parent = (UserGroup) selectedNode.getUserObject();
-                parent.addUser(newUser);
-                DefaultMutableTreeNode newNode = new DefaultMutableTreeNode(newUser, newUser.getAllowsChildren());
-                selectedNode.add(newNode);
-                model.reload();
+                UserGroup theRoot = (UserGroup) rootNode.getUserObject();
+//                TreePath findPath = List.getNextMatch(tfGroupID.getText(), 0, Position.Bias.Forward);
+                if (!theRoot.findUser(rootNode, tfUserID.getText()))
+                {
+                    User newUser = new User(tfUserID.getText(), rootNode);
+                    UserGroup parent = (UserGroup) selectedNode.getUserObject();
+                    parent.addUser(newUser);
+                    DefaultMutableTreeNode newNode = new DefaultMutableTreeNode(newUser, newUser.getAllowsChildren());
+                    selectedNode.add(newNode);
+                    model.reload();   
+                }
             }
         }
+//        if (List.getSelectionPath() != null)
+//        {
+//            DefaultMutableTreeNode selectedNode = (DefaultMutableTreeNode) List.getSelectionPath().getLastPathComponent();
+//            if (selectedNode.getAllowsChildren() && !tfUserID.getText().isEmpty())
+//            {
+//                DefaultTreeModel model = (DefaultTreeModel) List.getModel();
+//                DefaultMutableTreeNode rootNode = (DefaultMutableTreeNode) model.getRoot();
+//                User newUser = new User(tfUserID.getText(), rootNode);
+//                TreePath findPath = List.getNextMatch(tfGroupID.getText(), 0, Position.Bias.Forward);
+//                if (findPath == null)
+//                {
+//                    UserGroup parent = (UserGroup) selectedNode.getUserObject();
+//                    parent.addUser(newUser);
+//                    DefaultMutableTreeNode newNode = new DefaultMutableTreeNode(newUser, newUser.getAllowsChildren());
+//                    selectedNode.add(newNode);
+//                    model.reload();   
+//                }
+//            }
+//        }
     
     }//GEN-LAST:event_btnAddUserActionPerformed
 
@@ -209,16 +235,38 @@ public class AdminControlPanel extends javax.swing.JFrame {
             DefaultMutableTreeNode selectedNode = (DefaultMutableTreeNode) List.getSelectionPath().getLastPathComponent();
             if (selectedNode.getAllowsChildren() && !tfUserID.getText().isEmpty())
             {
-                UserGroup newUser = new UserGroup(tfGroupID.getText());
-                UserGroup parent = (UserGroup) selectedNode.getUserObject();
-                parent.addUser(newUser);
-                DefaultMutableTreeNode newNode = new DefaultMutableTreeNode(newUser, newUser.getAllowsChildren());
-                selectedNode.add(newNode);
                 DefaultTreeModel model = (DefaultTreeModel) List.getModel();
-                model.reload();
-
+                DefaultMutableTreeNode rootNode = (DefaultMutableTreeNode) model.getRoot();
+                UserGroup theRoot = (UserGroup) rootNode.getUserObject();
+                if (!theRoot.findGroup(rootNode, tfUserID.getText()))
+                {
+                    UserGroup newUser = new UserGroup(tfUserID.getText());
+                    UserGroup parent = (UserGroup) selectedNode.getUserObject();
+                    parent.addUser(newUser);
+                    DefaultMutableTreeNode newNode = new DefaultMutableTreeNode(newUser, newUser.getAllowsChildren());
+                    selectedNode.add(newNode);
+                    model.reload();   
+                }
             }
         }
+//        if (List.getSelectionPath() != null)
+//        {
+//            DefaultTreeModel model = (DefaultTreeModel) List.getModel();
+//            DefaultMutableTreeNode selectedNode = (DefaultMutableTreeNode) List.getSelectionPath().getLastPathComponent();
+//            if (selectedNode.getAllowsChildren() && !tfGroupID.getText().isEmpty())
+//            {
+//                TreePath findPath = List.getNextMatch(tfGroupID.getText(), 0, Position.Bias.Forward);
+//                if (findPath == null)
+//                {
+//                    UserGroup newUser = new UserGroup(tfGroupID.getText());
+//                    UserGroup parent = (UserGroup) selectedNode.getUserObject();
+//                    parent.addUser(newUser);
+//                    DefaultMutableTreeNode newNode = new DefaultMutableTreeNode(newUser, newUser.getAllowsChildren());
+//                    selectedNode.add(newNode);
+//                    model.reload();
+//                }
+//            }
+//        }
         
         
     }//GEN-LAST:event_btnAddGroupActionPerformed

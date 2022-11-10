@@ -23,7 +23,62 @@ public class UserGroup extends DefaultMutableTreeNode implements CompositeUser{
     {
         return userGroup;
     }
-
+    
+    public boolean findGroup(DefaultMutableTreeNode root, String targetID)
+    {
+        System.out.println(root.getChildCount());
+        for (int i = 0; i < root.getChildCount(); i++)
+        {
+            DefaultMutableTreeNode child = (DefaultMutableTreeNode) root.getChildAt(i);
+            CompositeUser item = (CompositeUser) child.getUserObject();
+            if (item instanceof User)
+            {
+                continue;
+            }
+            else
+            {
+                if (item.getID().equals(targetID))
+                {
+                    return true;
+                }
+                else
+                {
+                    if (((UserGroup) item).findGroup(child, targetID))
+                    {   
+                        return true;
+                    }
+                }
+            }
+        }
+        
+        return false;
+    }
+    
+    public boolean findUser(DefaultMutableTreeNode root, String targetID)
+    {
+        System.out.println(root.getChildCount());
+        for (int i = 0; i < root.getChildCount(); i++)
+        {
+            DefaultMutableTreeNode child = (DefaultMutableTreeNode) root.getChildAt(i);
+            CompositeUser item = (CompositeUser) child.getUserObject();
+            if (item instanceof User)
+            {
+                if (item.getID().equals(targetID))
+                {
+                    return true;
+                }
+            }
+            else
+            {
+                if (((UserGroup) item).findUser(child, targetID))
+                {
+                    return true;
+                }
+            }
+        }
+        
+        return false;
+    }
 
     @Override
     public String getID() {

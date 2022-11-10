@@ -1,7 +1,5 @@
 import java.util.ArrayList;
-import java.util.Enumeration;
 import javax.swing.tree.DefaultMutableTreeNode;
-import javax.swing.tree.TreeNode;
 
 public class User extends DefaultMutableTreeNode implements CompositeUser{
     
@@ -21,41 +19,23 @@ public class User extends DefaultMutableTreeNode implements CompositeUser{
         return following;
     }
     
-    public DefaultMutableTreeNode find(DefaultMutableTreeNode root, String targetID)
-    {
-        System.out.println(root.getChildCount());
-        for (int i = 0; i < root.getChildCount(); i++)
-        {
-            DefaultMutableTreeNode child = (DefaultMutableTreeNode) root.getChildAt(i);
-            if (!child.getAllowsChildren())
-            {
-                User targetUser = (User) child.getUserObject();
-                if (targetUser.getID().equals(targetID))
-                {
-                    System.out.println("found");
-                    return child;
-                }
-            }
-        }
-        
-        return null;
-    }
     
-    public void follow(String userID)
-    {
-        DefaultMutableTreeNode node = find(root, userID);
-        if (node != null)
-        {
-            User user = (User) node.getUserObject();
-            if (following.indexOf(user) < 0)
-            {
-                following.add(user);
-                System.out.println(this + " is now following " + user);
-                print();
-            }
-            
-        }
-    }
+    
+//    public void follow(String userID)
+//    {
+//        DefaultMutableTreeNode node = find(root, userID);
+//        if (node != null)
+//        {
+//            User user = (User) node.getUserObject();
+//            if (following.indexOf(user) < 0)
+//            {
+//                following.add(user);
+//                System.out.println(this + " is now following " + user);
+//                print();
+//            }
+//            
+//        }
+//    }
     
     public void print()
     {
