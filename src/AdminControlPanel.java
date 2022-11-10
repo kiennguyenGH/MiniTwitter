@@ -185,7 +185,6 @@ public class AdminControlPanel extends javax.swing.JFrame {
                 DefaultTreeModel model = (DefaultTreeModel) List.getModel();
                 DefaultMutableTreeNode rootNode = (DefaultMutableTreeNode) model.getRoot();
                 UserGroup theRoot = (UserGroup) rootNode.getUserObject();
-//                TreePath findPath = List.getNextMatch(tfGroupID.getText(), 0, Position.Bias.Forward);
                 if (theRoot.findUser(rootNode, tfUserID.getText()) == null)
                 {
                     User newUser = new User(tfUserID.getText(), rootNode);
@@ -197,26 +196,6 @@ public class AdminControlPanel extends javax.swing.JFrame {
                 }
             }
         }
-//        if (List.getSelectionPath() != null)
-//        {
-//            DefaultMutableTreeNode selectedNode = (DefaultMutableTreeNode) List.getSelectionPath().getLastPathComponent();
-//            if (selectedNode.getAllowsChildren() && !tfUserID.getText().isEmpty())
-//            {
-//                DefaultTreeModel model = (DefaultTreeModel) List.getModel();
-//                DefaultMutableTreeNode rootNode = (DefaultMutableTreeNode) model.getRoot();
-//                User newUser = new User(tfUserID.getText(), rootNode);
-//                TreePath findPath = List.getNextMatch(tfGroupID.getText(), 0, Position.Bias.Forward);
-//                if (findPath == null)
-//                {
-//                    UserGroup parent = (UserGroup) selectedNode.getUserObject();
-//                    parent.addUser(newUser);
-//                    DefaultMutableTreeNode newNode = new DefaultMutableTreeNode(newUser, newUser.getAllowsChildren());
-//                    selectedNode.add(newNode);
-//                    model.reload();   
-//                }
-//            }
-//        }
-    
     }//GEN-LAST:event_btnAddUserActionPerformed
 
     private void btnOpenUserViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOpenUserViewActionPerformed
@@ -267,8 +246,6 @@ public class AdminControlPanel extends javax.swing.JFrame {
 //                }
 //            }
 //        }
-        
-        
     }//GEN-LAST:event_btnAddGroupActionPerformed
 
     private void tfGroupIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfGroupIDActionPerformed

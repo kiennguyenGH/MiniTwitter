@@ -1,25 +1,27 @@
+import java.util.List;
 import java.util.ArrayList;
 import javax.swing.tree.DefaultMutableTreeNode;
 
-public class User extends DefaultMutableTreeNode implements CompositeUser{
+public class User extends DefaultMutableTreeNode implements CompositeUser, Subject{
     
     private String ID;
-    private ArrayList<User> following;
+    private ArrayList<Observer> observers = new ArrayList<Observer>();
+    private ArrayList<User> following = new ArrayList<User>();
+    private List<String> messageFeed = new ArrayList<String>();
+    private List<String> messages = new ArrayList<String>();
     private DefaultMutableTreeNode root;
     
     public User(String ID, DefaultMutableTreeNode root)
     {
         this.ID = ID;
-        following = new ArrayList<User>();
         this.root = root;
+        following.add(this);
     }
     
     public ArrayList<User> getFollowing()
     {
         return following;
     }
-    
-    
     
     public void follow(String userID)
     {
@@ -64,5 +66,18 @@ public class User extends DefaultMutableTreeNode implements CompositeUser{
     public String toString()
     {
         return ID;
+    }
+
+    @Override
+    public void attach(Observer observer) {
+        observers.add(observer);
+    }
+
+    @Override
+    public void notifyObservers() {
+        for (Observer observer: observers)
+        {
+            observer.update();
+        }
     }
 }

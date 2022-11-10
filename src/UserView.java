@@ -105,12 +105,12 @@ public class UserView extends javax.swing.JFrame {
     private void btnFollowUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFollowUserActionPerformed
 
         user.follow(tfUserID.getText());
-        if (user.getFollowing().indexOf(tfUserID.getText()) < 0)
+        if (user.getFollowing().indexOf(tfUserID.getText()) >= 0)
         {
             
-            if (!model.contains(tfUserID.getText()))
+            if (!model.contains("- " + tfUserID.getText()))
             {
-                model.addElement(tfUserID.getText());
+                model.addElement("- " + tfUserID.getText());
             }
         }
     }//GEN-LAST:event_btnFollowUserActionPerformed
