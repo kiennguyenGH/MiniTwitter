@@ -7,6 +7,7 @@ public class GroupTotalVisitor implements Visitor{
         return;
     }
 
+    //Each time group is visited, add increment groupTotal
     @Override
     public void visitGroup(CompositeUser userGroup) {
         groupTotal++;

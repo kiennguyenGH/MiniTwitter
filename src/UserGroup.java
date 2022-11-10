@@ -8,22 +8,26 @@ public class UserGroup extends DefaultMutableTreeNode implements CompositeUser, 
         this.ID = ID;
     }
     
+    //Adds leaf to composite
     public void addUser(CompositeUser user)
     {
         userGroup.add(user);
     }
     
+    //Checks if userGroup is composite
     @Override
     public boolean getAllowsChildren()
     {
         return true;
     }
     
+   //Return all the nodes in this specific composite
     public ArrayList<CompositeUser> getUserGroup()
     {
         return userGroup;
     }
     
+    //Traverses through composite to find desired group
     public DefaultMutableTreeNode findGroup(DefaultMutableTreeNode root, String targetID)
     {
         System.out.println(root.getChildCount());
@@ -54,6 +58,7 @@ public class UserGroup extends DefaultMutableTreeNode implements CompositeUser, 
         return null;
     }
     
+    //Traverses through composite to find desired user
     public DefaultMutableTreeNode findUser(DefaultMutableTreeNode root, String targetID)
     {
         System.out.println(root.getChildCount());
@@ -93,6 +98,7 @@ public class UserGroup extends DefaultMutableTreeNode implements CompositeUser, 
         return ID;
     }
 
+    //Allows visitor to visit children of a composite/group
     @Override
     public void accept(Visitor visitor) {
         visitor.visitGroup(this);

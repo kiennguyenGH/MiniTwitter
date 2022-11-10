@@ -24,12 +24,11 @@ public class User extends DefaultMutableTreeNode implements CompositeUser, Subje
         return following;
     }
     
+    //Follows user and attaches an observer to the user
     public void follow(String userID)
     {
         UserGroup theRoot = (UserGroup) root.getUserObject();
         DefaultMutableTreeNode node = theRoot.findUser(root, userID);
-//        UserGroup user = (UserGroup) node.getUserObject();
-//        System.out.println(user);
         if (node != null)
         {
             User user = (User) node.getUserObject();
@@ -45,22 +44,27 @@ public class User extends DefaultMutableTreeNode implements CompositeUser, Subje
         }
     }
     
+    //Return message feed from users that are being followed
     public ArrayList<String> getMessageFeed()
     {
         return messageFeed;
     }
     
+    //Return messages that this user has tweeted out
     public ArrayList<String> getMessages()
     {
         return messages;
     }
     
+    //Tweets a message and sends it out to followers (AKA observers)
     public void sendMessage(String message)
     {
         messages.add(message);
         notifyObservers(message);
     }
     
+    
+    // Print statement for debugging
     public void print()
     {
         for (User i: following)
@@ -69,6 +73,7 @@ public class User extends DefaultMutableTreeNode implements CompositeUser, Subje
         }
     }
     
+    // Print statement for debugging
     public void printObserver()
     {
         for (Observer i: observers)
@@ -77,6 +82,7 @@ public class User extends DefaultMutableTreeNode implements CompositeUser, Subje
         }
     }
     
+    // Print statement for debugging
     public void printMessageFeed()
     {
         for (String i: messageFeed)
@@ -91,6 +97,7 @@ public class User extends DefaultMutableTreeNode implements CompositeUser, Subje
         return ID;
     }
     
+    //Checks if user is composite or not
     @Override
     public boolean getAllowsChildren()
     {
@@ -103,11 +110,13 @@ public class User extends DefaultMutableTreeNode implements CompositeUser, Subje
         return ID;
     }
 
+    //Attaches observer to user being followed
     @Override
     public void attach(Observer observer) {
         observers.add(observer);
     }
 
+    //Notifies observers when new message is tweeted
     @Override
     public void notifyObservers(String message) {
         for (Observer observer: observers)
@@ -116,6 +125,7 @@ public class User extends DefaultMutableTreeNode implements CompositeUser, Subje
         }
     }
 
+    //Adds new message to message feed from followed user
     @Override
     public void update(Subject subject, String message) {
         messageFeed.add(subject + ": " + message);
