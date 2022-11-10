@@ -2,7 +2,7 @@ import java.util.List;
 import java.util.ArrayList;
 import javax.swing.tree.DefaultMutableTreeNode;
 
-public class User extends DefaultMutableTreeNode implements CompositeUser, Subject{
+public class User extends DefaultMutableTreeNode implements CompositeUser, Subject, Observer{
     
     private String ID;
     private ArrayList<Observer> observers = new ArrayList<Observer>();
@@ -16,6 +16,7 @@ public class User extends DefaultMutableTreeNode implements CompositeUser, Subje
         this.ID = ID;
         this.root = root;
         following.add(this);
+        observers.add(this);
     }
     
     public ArrayList<User> getFollowing()
@@ -35,6 +36,8 @@ public class User extends DefaultMutableTreeNode implements CompositeUser, Subje
             if (following.indexOf(user) < 0)
             {
                 following.add(user);
+                user.attach(this);
+                System.out.println(this + " is now observing " + user);
                 System.out.println(this + " is now following " + user);
                 print();
             }
@@ -42,9 +45,36 @@ public class User extends DefaultMutableTreeNode implements CompositeUser, Subje
         }
     }
     
+    public List<String> getMessageFeed()
+    {
+        return messageFeed;
+    }
+    
+    public void sendMessage(String message)
+    {
+        messages.add(message);
+        notifyObservers(message);
+    }
+    
     public void print()
     {
         for (User i: following)
+        {
+            System.out.println(i);
+        }
+    }
+    
+    public void printObserver()
+    {
+        for (Observer i: observers)
+        {
+            System.out.println(i);
+        }
+    }
+    
+    public void printNewsFeed()
+    {
+        for (String i: messageFeed)
         {
             System.out.println(i);
         }
@@ -74,10 +104,15 @@ public class User extends DefaultMutableTreeNode implements CompositeUser, Subje
     }
 
     @Override
-    public void notifyObservers() {
+    public void notifyObservers(String message) {
         for (Observer observer: observers)
         {
-            observer.update();
+            observer.update(this, message);
         }
+    }
+
+    @Override
+    public void update(Subject subject, String message) {
+        messageFeed.add(subject + ": " + message);
     }
 }
