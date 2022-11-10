@@ -145,9 +145,7 @@ public class AdminControlPanel extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(btnShowPositive, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(btnShowGroupTotal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(123, 123, 123)
-                                .addComponent(AnalysisText, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(AnalysisText, javax.swing.GroupLayout.PREFERRED_SIZE, 363, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -288,7 +286,9 @@ public class AdminControlPanel extends javax.swing.JFrame {
     }//GEN-LAST:event_btnShowTotalMessagesActionPerformed
 
     private void btnShowPositiveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShowPositiveActionPerformed
-        // TODO add your handling code here:
+        PositivePercentageVisitor visitor = new PositivePercentageVisitor();
+        root.accept(visitor);
+        AnalysisText.setText("Percentage of Positive Messages: " + visitor.getPositivePercentage());
     }//GEN-LAST:event_btnShowPositiveActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
