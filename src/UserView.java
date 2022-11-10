@@ -1,15 +1,18 @@
-
 import javax.swing.DefaultListModel;
-import javax.swing.tree.DefaultMutableTreeNode;
-
 public class UserView extends javax.swing.JFrame {
 
     
-    private User user;
-    
+    private User user;        
+    private DefaultListModel model = new DefaultListModel();
     public UserView(User user) {
         this.user = user;
         initComponents();
+        FollowList.setModel(model);
+        model.addElement("<HTML><U>List View (Current Following)</HTML>");
+        for (int i = 0; i < user.getFollowing().size(); i++)
+        {
+            model.addElement(user.getFollowing().get(i));
+        }
         System.out.println("User " + user + " opened.");
     }
 
@@ -47,11 +50,6 @@ public class UserView extends javax.swing.JFrame {
             }
         });
 
-        FollowList.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "<HTML><U>List View (Current Following)</HTML>" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
         jScrollPane1.setViewportView(FollowList);
 
         tfTweetMessage.setText("TextArea - Tweet Message");
@@ -105,10 +103,16 @@ public class UserView extends javax.swing.JFrame {
     }//GEN-LAST:event_tfUserIDActionPerformed
 
     private void btnFollowUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFollowUserActionPerformed
+
         user.follow(tfUserID.getText());
-//        DefaultListModel<String> model = new DefaultListModel<>();
-//        model.addElement(tfUserID.getText());
-//        FollowList.setModel(model);
+        if (user.getFollowing().indexOf(tfUserID.getText()) < 0)
+        {
+            
+            if (!model.contains(tfUserID.getText()))
+            {
+                model.addElement(tfUserID.getText());
+            }
+        }
     }//GEN-LAST:event_btnFollowUserActionPerformed
 
     /**
