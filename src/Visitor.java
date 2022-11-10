@@ -1,4 +1,4 @@
 public interface Visitor {
-    public void visitUser(User user);
-    public void visitGroup(UserGroup userGroup);
+    public void visitUser(CompositeUser user);
+    public void visitGroup(CompositeUser userGroup);
 }

@@ -260,9 +260,9 @@ public class AdminControlPanel extends javax.swing.JFrame {
     }//GEN-LAST:event_tfUserIDActionPerformed
 
     private void btnShowUserTotalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShowUserTotalActionPerformed
-//        String text = "";
-//        text += users.size();
-//        AnalysisText.setText(text);
+        UserTotalVisitor visitor = new UserTotalVisitor();
+        root.accept(visitor);
+        AnalysisText.setText("Total number of users: " + visitor.getUserTotal());
     }//GEN-LAST:event_btnShowUserTotalActionPerformed
 
     private void btnShowGroupTotalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShowGroupTotalActionPerformed

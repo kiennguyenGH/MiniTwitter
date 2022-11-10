@@ -2,7 +2,7 @@ import java.util.List;
 import java.util.ArrayList;
 import javax.swing.tree.DefaultMutableTreeNode;
 
-public class User extends DefaultMutableTreeNode implements CompositeUser, Subject, Observer{
+public class User extends DefaultMutableTreeNode implements CompositeUser, Subject, Observer, Visitable{
     
     private String ID;
     private ArrayList<Observer> observers = new ArrayList<Observer>();
@@ -114,5 +114,10 @@ public class User extends DefaultMutableTreeNode implements CompositeUser, Subje
     @Override
     public void update(Subject subject, String message) {
         messageFeed.add(subject + ": " + message);
+    }
+
+    @Override
+    public void accept(Visitor visitor) {
+        visitor.visitUser(this);
     }
 }

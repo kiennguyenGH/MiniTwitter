@@ -1,15 +1,20 @@
 public class UserTotalVisitor implements Visitor {
 
-    private int UserTotal;
+    private int userTotal = 0;
     
     @Override
-    public void visitUser(User user) {
-        
+    public void visitUser(CompositeUser user) {
+        userTotal++;
     }
 
     @Override
-    public void visitGroup(UserGroup userGroup) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public void visitGroup(CompositeUser userGroup) {
+        return;
+    }
+    
+    public int getUserTotal()
+    {
+        return userTotal;
     }
     
 }

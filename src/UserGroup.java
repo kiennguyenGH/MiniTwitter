@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 import javax.swing.tree.DefaultMutableTreeNode;
-public class UserGroup extends DefaultMutableTreeNode implements CompositeUser{
+public class UserGroup extends DefaultMutableTreeNode implements CompositeUser, Visitable{
     private String ID;
     private ArrayList<CompositeUser> userGroup = new ArrayList<CompositeUser>();
     public UserGroup(String ID)
@@ -91,6 +91,22 @@ public class UserGroup extends DefaultMutableTreeNode implements CompositeUser{
     public String toString()
     {
         return ID;
+    }
+
+    @Override
+    public void accept(Visitor visitor) {
+        visitor.visitGroup(this);
+        for (CompositeUser i: userGroup)
+        {
+            if (i instanceof User)
+            {
+                ((User)i).accept(visitor);
+            }
+            else if (i instanceof UserGroup)
+            {
+                ((UserGroup)i).accept(visitor);
+            }
+        }
     }
 
 
