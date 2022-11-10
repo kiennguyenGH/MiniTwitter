@@ -166,11 +166,17 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="&lt;html&gt;Button - Show&lt;br&gt;&#xa;Messages Total"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnShowTotalMessagesActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnShowPositive">
       <Properties>
-        <Property name="text" type="java.lang.String" value="&lt;html&gt;Button - Show&lt;ba&gt;&#xa;Positive Percentage"/>
+        <Property name="text" type="java.lang.String" value="&lt;html&gt;Button - Show&lt;ba&gt; Positive Percentage"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnShowPositiveActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="AnalysisText">
     </Component>

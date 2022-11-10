@@ -100,8 +100,18 @@ public class AdminControlPanel extends javax.swing.JFrame {
         });
 
         btnShowTotalMessages.setText("<html>Button - Show<br>\nMessages Total");
+        btnShowTotalMessages.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnShowTotalMessagesActionPerformed(evt);
+            }
+        });
 
-        btnShowPositive.setText("<html>Button - Show<ba>\nPositive Percentage");
+        btnShowPositive.setText("<html>Button - Show<ba> Positive Percentage");
+        btnShowPositive.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnShowPositiveActionPerformed(evt);
+            }
+        });
 
         javax.swing.tree.DefaultMutableTreeNode treeNode1 = new javax.swing.tree.DefaultMutableTreeNode(root);
         List.setModel(new javax.swing.tree.DefaultTreeModel(treeNode1));
@@ -270,6 +280,16 @@ public class AdminControlPanel extends javax.swing.JFrame {
         root.accept(visitor);
         AnalysisText.setText("Total number of groups: " + visitor.getGroupTotal());
     }//GEN-LAST:event_btnShowGroupTotalActionPerformed
+
+    private void btnShowTotalMessagesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShowTotalMessagesActionPerformed
+        MessagesTotalVisitor visitor = new MessagesTotalVisitor();
+        root.accept(visitor);
+        AnalysisText.setText("Total number of messages: " + visitor.getMessagesTotal());
+    }//GEN-LAST:event_btnShowTotalMessagesActionPerformed
+
+    private void btnShowPositiveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShowPositiveActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnShowPositiveActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel AnalysisText;

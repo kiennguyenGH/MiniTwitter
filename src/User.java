@@ -7,8 +7,8 @@ public class User extends DefaultMutableTreeNode implements CompositeUser, Subje
     private String ID;
     private ArrayList<Observer> observers = new ArrayList<Observer>();
     private ArrayList<User> following = new ArrayList<User>();
-    private List<String> messageFeed = new ArrayList<String>();
-    private List<String> messages = new ArrayList<String>();
+    private ArrayList<String> messageFeed = new ArrayList<String>();
+    private ArrayList<String> messages = new ArrayList<String>();
     private DefaultMutableTreeNode root;
     
     public User(String ID, DefaultMutableTreeNode root)
@@ -45,9 +45,14 @@ public class User extends DefaultMutableTreeNode implements CompositeUser, Subje
         }
     }
     
-    public List<String> getMessageFeed()
+    public ArrayList<String> getMessageFeed()
     {
         return messageFeed;
+    }
+    
+    public ArrayList<String> getMessages()
+    {
+        return messages;
     }
     
     public void sendMessage(String message)
