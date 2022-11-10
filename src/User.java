@@ -72,7 +72,7 @@ public class User extends DefaultMutableTreeNode implements CompositeUser, Subje
         }
     }
     
-    public void printNewsFeed()
+    public void printMessageFeed()
     {
         for (String i: messageFeed)
         {
