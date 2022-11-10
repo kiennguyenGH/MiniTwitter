@@ -24,7 +24,7 @@ public class UserGroup extends DefaultMutableTreeNode implements CompositeUser{
         return userGroup;
     }
     
-    public boolean findGroup(DefaultMutableTreeNode root, String targetID)
+    public DefaultMutableTreeNode findGroup(DefaultMutableTreeNode root, String targetID)
     {
         System.out.println(root.getChildCount());
         for (int i = 0; i < root.getChildCount(); i++)
@@ -39,22 +39,22 @@ public class UserGroup extends DefaultMutableTreeNode implements CompositeUser{
             {
                 if (item.getID().equals(targetID))
                 {
-                    return true;
+                    return child;
                 }
                 else
                 {
-                    if (((UserGroup) item).findGroup(child, targetID))
+                    if (((UserGroup) item).findGroup(child, targetID) != null)
                     {   
-                        return true;
+                        return child;
                     }
                 }
             }
         }
         
-        return false;
+        return null;
     }
     
-    public boolean findUser(DefaultMutableTreeNode root, String targetID)
+    public DefaultMutableTreeNode findUser(DefaultMutableTreeNode root, String targetID)
     {
         System.out.println(root.getChildCount());
         for (int i = 0; i < root.getChildCount(); i++)
@@ -65,19 +65,19 @@ public class UserGroup extends DefaultMutableTreeNode implements CompositeUser{
             {
                 if (item.getID().equals(targetID))
                 {
-                    return true;
+                    return child;
                 }
             }
             else
             {
-                if (((UserGroup) item).findUser(child, targetID))
+                if (((UserGroup) item).findUser(child, targetID) != null)
                 {
-                    return true;
+                    return child;
                 }
             }
         }
         
-        return false;
+        return null;
     }
 
     @Override

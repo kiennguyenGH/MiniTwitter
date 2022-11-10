@@ -186,7 +186,7 @@ public class AdminControlPanel extends javax.swing.JFrame {
                 DefaultMutableTreeNode rootNode = (DefaultMutableTreeNode) model.getRoot();
                 UserGroup theRoot = (UserGroup) rootNode.getUserObject();
 //                TreePath findPath = List.getNextMatch(tfGroupID.getText(), 0, Position.Bias.Forward);
-                if (!theRoot.findUser(rootNode, tfUserID.getText()))
+                if (theRoot.findUser(rootNode, tfUserID.getText()) == null)
                 {
                     User newUser = new User(tfUserID.getText(), rootNode);
                     UserGroup parent = (UserGroup) selectedNode.getUserObject();
@@ -238,7 +238,7 @@ public class AdminControlPanel extends javax.swing.JFrame {
                 DefaultTreeModel model = (DefaultTreeModel) List.getModel();
                 DefaultMutableTreeNode rootNode = (DefaultMutableTreeNode) model.getRoot();
                 UserGroup theRoot = (UserGroup) rootNode.getUserObject();
-                if (!theRoot.findGroup(rootNode, tfGroupID.getText()))
+                if (theRoot.findGroup(rootNode, tfGroupID.getText()) == null)
                 {
                     UserGroup newUser = new UserGroup(tfGroupID.getText());
                     UserGroup parent = (UserGroup) selectedNode.getUserObject();
