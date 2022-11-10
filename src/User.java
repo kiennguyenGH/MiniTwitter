@@ -21,21 +21,24 @@ public class User extends DefaultMutableTreeNode implements CompositeUser{
     
     
     
-//    public void follow(String userID)
-//    {
-//        DefaultMutableTreeNode node = find(root, userID);
-//        if (node != null)
-//        {
-//            User user = (User) node.getUserObject();
-//            if (following.indexOf(user) < 0)
-//            {
-//                following.add(user);
-//                System.out.println(this + " is now following " + user);
-//                print();
-//            }
-//            
-//        }
-//    }
+    public void follow(String userID)
+    {
+        UserGroup theRoot = (UserGroup) root.getUserObject();
+        DefaultMutableTreeNode node = theRoot.findUser(root, userID);
+//        UserGroup user = (UserGroup) node.getUserObject();
+//        System.out.println(user);
+        if (node != null)
+        {
+            User user = (User) node.getUserObject();
+            if (following.indexOf(user) < 0)
+            {
+                following.add(user);
+                System.out.println(this + " is now following " + user);
+                print();
+            }
+            
+        }
+    }
     
     public void print()
     {

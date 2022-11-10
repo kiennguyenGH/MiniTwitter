@@ -65,6 +65,7 @@ public class UserGroup extends DefaultMutableTreeNode implements CompositeUser{
             {
                 if (item.getID().equals(targetID))
                 {
+                    System.out.println("Found user" + item);
                     return child;
                 }
             }
@@ -72,7 +73,8 @@ public class UserGroup extends DefaultMutableTreeNode implements CompositeUser{
             {
                 if (((UserGroup) item).findUser(child, targetID) != null)
                 {
-                    return child;
+                    System.out.println("Found user" + item);
+                    return ((UserGroup) item).findUser(child, targetID);
                 }
             }
         }
