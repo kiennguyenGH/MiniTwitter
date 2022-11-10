@@ -266,7 +266,9 @@ public class AdminControlPanel extends javax.swing.JFrame {
     }//GEN-LAST:event_btnShowUserTotalActionPerformed
 
     private void btnShowGroupTotalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShowGroupTotalActionPerformed
-        // TODO add your handling code here:
+        GroupTotalVisitor visitor = new GroupTotalVisitor();
+        root.accept(visitor);
+        AnalysisText.setText("Total number of groups: " + visitor.getGroupTotal());
     }//GEN-LAST:event_btnShowGroupTotalActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
