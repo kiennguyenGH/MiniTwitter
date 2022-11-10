@@ -40,9 +40,6 @@ public class User extends DefaultMutableTreeNode implements CompositeUser{
         
         return null;
     }
-
-    public User() {
-    }
     
     public void follow(String userID)
     {
@@ -50,8 +47,13 @@ public class User extends DefaultMutableTreeNode implements CompositeUser{
         if (node != null)
         {
             User user = (User) node.getUserObject();
-            following.add(user);
-            System.out.println(this + " is now following " + user);
+            if (following.indexOf(user) < 0)
+            {
+                following.add(user);
+                System.out.println(this + " is now following " + user);
+                print();
+            }
+            
         }
     }
     

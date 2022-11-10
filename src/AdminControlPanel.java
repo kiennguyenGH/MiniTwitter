@@ -11,22 +11,15 @@ public class AdminControlPanel extends javax.swing.JFrame {
     
     public static AdminControlPanel getInstance()
     {
-        if (root == null)
-        {
-            root = new UserGroup("root");
-        }
         if (instance == null)
         {
             instance = new AdminControlPanel();
         }
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new AdminControlPanel().setVisible(true);
-            }
-        });
+        instance.setVisible(true);
         return instance;
     }
     private AdminControlPanel() {
+        root = new UserGroup("root");
         initComponents();
     }
     
@@ -182,19 +175,22 @@ public class AdminControlPanel extends javax.swing.JFrame {
 
     // Add user to global list of users
     private void btnAddUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddUserActionPerformed
-        DefaultMutableTreeNode selectedNode = (DefaultMutableTreeNode) List.getSelectionPath().getLastPathComponent();
-        if (selectedNode.getAllowsChildren() && !tfUserID.getText().isEmpty())
+        if (List.getSelectionPath() != null)
         {
-            DefaultTreeModel model = (DefaultTreeModel) List.getModel();
-            DefaultMutableTreeNode rootNode = (DefaultMutableTreeNode) model.getRoot();
-            User newUser = new User(tfUserID.getText(), rootNode);
-            UserGroup parent = (UserGroup) selectedNode.getUserObject();
-            parent.addUser(newUser);
-            DefaultMutableTreeNode newNode = new DefaultMutableTreeNode(newUser, newUser.getAllowsChildren());
-            selectedNode.add(newNode);
-//            DefaultTreeModel model = (DefaultTreeModel) List.getModel();
-            model.reload();
+            DefaultMutableTreeNode selectedNode = (DefaultMutableTreeNode) List.getSelectionPath().getLastPathComponent();
+            if (selectedNode.getAllowsChildren() && !tfUserID.getText().isEmpty())
+            {
+                DefaultTreeModel model = (DefaultTreeModel) List.getModel();
+                DefaultMutableTreeNode rootNode = (DefaultMutableTreeNode) model.getRoot();
+                User newUser = new User(tfUserID.getText(), rootNode);
+                UserGroup parent = (UserGroup) selectedNode.getUserObject();
+                parent.addUser(newUser);
+                DefaultMutableTreeNode newNode = new DefaultMutableTreeNode(newUser, newUser.getAllowsChildren());
+                selectedNode.add(newNode);
+                model.reload();
+            }
         }
+    
     }//GEN-LAST:event_btnAddUserActionPerformed
 
     private void btnOpenUserViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOpenUserViewActionPerformed
@@ -208,18 +204,23 @@ public class AdminControlPanel extends javax.swing.JFrame {
     }//GEN-LAST:event_btnOpenUserViewActionPerformed
 
     private void btnAddGroupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddGroupActionPerformed
-        DefaultMutableTreeNode selectedNode = (DefaultMutableTreeNode) List.getSelectionPath().getLastPathComponent();
-        if (selectedNode.getAllowsChildren() && !tfUserID.getText().isEmpty())
+        if (List.getSelectionPath() != null)
         {
-            UserGroup newUser = new UserGroup(tfGroupID.getText());
-            UserGroup parent = (UserGroup) selectedNode.getUserObject();
-            parent.addUser(newUser);
-            DefaultMutableTreeNode newNode = new DefaultMutableTreeNode(newUser, newUser.getAllowsChildren());
-            selectedNode.add(newNode);
-            DefaultTreeModel model = (DefaultTreeModel) List.getModel();
-            model.reload();
-            
+            DefaultMutableTreeNode selectedNode = (DefaultMutableTreeNode) List.getSelectionPath().getLastPathComponent();
+            if (selectedNode.getAllowsChildren() && !tfUserID.getText().isEmpty())
+            {
+                UserGroup newUser = new UserGroup(tfGroupID.getText());
+                UserGroup parent = (UserGroup) selectedNode.getUserObject();
+                parent.addUser(newUser);
+                DefaultMutableTreeNode newNode = new DefaultMutableTreeNode(newUser, newUser.getAllowsChildren());
+                selectedNode.add(newNode);
+                DefaultTreeModel model = (DefaultTreeModel) List.getModel();
+                model.reload();
+
+            }
         }
+        
+        
     }//GEN-LAST:event_btnAddGroupActionPerformed
 
     private void tfGroupIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfGroupIDActionPerformed
