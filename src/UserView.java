@@ -49,12 +49,6 @@ public class UserView extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        tfUserID.setText("TextArea - User ID");
-        tfUserID.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tfUserIDActionPerformed(evt);
-            }
-        });
 
         btnFollowUser.setText("Button - Follow User");
         btnFollowUser.addActionListener(new java.awt.event.ActionListener() {
@@ -64,8 +58,6 @@ public class UserView extends javax.swing.JFrame {
         });
 
         jScrollPane1.setViewportView(FollowList);
-
-        tfTweetMessage.setText("TextArea - Tweet Message");
 
         btnPostTweet.setText("Button - Post Tweet");
         btnPostTweet.addActionListener(new java.awt.event.ActionListener() {
@@ -126,10 +118,6 @@ public class UserView extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void tfUserIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfUserIDActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tfUserIDActionPerformed
 
     //User can follow other users
     private void btnFollowUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFollowUserActionPerformed

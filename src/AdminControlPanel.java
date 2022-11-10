@@ -80,20 +80,6 @@ public class AdminControlPanel extends javax.swing.JFrame {
             }
         });
 
-        tfUserID.setText("TextArea - User ID");
-        tfUserID.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tfUserIDActionPerformed(evt);
-            }
-        });
-
-        tfGroupID.setText("TextArea - Group ID");
-        tfGroupID.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tfGroupIDActionPerformed(evt);
-            }
-        });
-
         btnShowGroupTotal.setText("Button - Show Group Total");
         btnShowGroupTotal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -244,17 +230,6 @@ public class AdminControlPanel extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_btnAddGroupActionPerformed
-
-    private void tfGroupIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfGroupIDActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tfGroupIDActionPerformed
-
-    private void tfUserIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfUserIDActionPerformed
-//        if (tfUserID.getText().length() > 0)
-//        {
-//            addUser(new User(tfUserID.getText()));
-//        }
-    }//GEN-LAST:event_tfUserIDActionPerformed
 
     //Displays the total number of users with visitor pattern
     private void btnShowUserTotalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShowUserTotalActionPerformed
