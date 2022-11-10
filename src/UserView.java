@@ -41,7 +41,6 @@ public class UserView extends javax.swing.JFrame {
         btnPostTweet = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         NewsFeed = new javax.swing.JList<>();
-        ObserverButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -72,13 +71,6 @@ public class UserView extends javax.swing.JFrame {
 
         jScrollPane2.setViewportView(NewsFeed);
 
-        ObserverButton.setText("printNewsFeed");
-        ObserverButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ObserverButtonActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -90,9 +82,7 @@ public class UserView extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(tfTweetMessage, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnPostTweet, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(ObserverButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(btnPostTweet, javax.swing.GroupLayout.DEFAULT_SIZE, 195, Short.MAX_VALUE))
                     .addComponent(jScrollPane1)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(tfUserID)
@@ -112,8 +102,7 @@ public class UserView extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(tfTweetMessage)
-                    .addComponent(btnPostTweet, javax.swing.GroupLayout.DEFAULT_SIZE, 46, Short.MAX_VALUE)
-                    .addComponent(ObserverButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnPostTweet, javax.swing.GroupLayout.DEFAULT_SIZE, 46, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 146, Short.MAX_VALUE)
                 .addContainerGap())
@@ -146,10 +135,6 @@ public class UserView extends javax.swing.JFrame {
     private void btnPostTweetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPostTweetActionPerformed
         user.sendMessage(tfTweetMessage.getText());
     }//GEN-LAST:event_btnPostTweetActionPerformed
-
-    private void ObserverButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ObserverButtonActionPerformed
-        user.printNewsFeed();
-    }//GEN-LAST:event_ObserverButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -189,7 +174,6 @@ public class UserView extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JList<String> FollowList;
     private javax.swing.JList<String> NewsFeed;
-    private javax.swing.JButton ObserverButton;
     private javax.swing.JButton btnFollowUser;
     private javax.swing.JButton btnPostTweet;
     private javax.swing.JScrollPane jScrollPane1;

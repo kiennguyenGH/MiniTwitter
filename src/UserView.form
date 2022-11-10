@@ -30,9 +30,7 @@
                   <Group type="102" attributes="0">
                       <Component id="tfTweetMessage" min="-2" pref="199" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="btnPostTweet" min="-2" pref="80" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="ObserverButton" max="32767" attributes="0"/>
+                      <Component id="btnPostTweet" pref="195" max="32767" attributes="0"/>
                   </Group>
                   <Component id="jScrollPane1" max="32767" attributes="0"/>
                   <Group type="102" attributes="0">
@@ -59,7 +57,6 @@
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Component id="tfTweetMessage" max="32767" attributes="0"/>
                   <Component id="btnPostTweet" pref="46" max="32767" attributes="0"/>
-                  <Component id="ObserverButton" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jScrollPane2" pref="146" max="32767" attributes="0"/>
@@ -136,13 +133,5 @@
         </Component>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JButton" name="ObserverButton">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="printNewsFeed"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ObserverButtonActionPerformed"/>
-      </Events>
-    </Component>
   </SubComponents>
 </Form>
