@@ -9,9 +9,9 @@ public class UserView extends javax.swing.JFrame {
         initComponents();
         FollowList.setModel(model);
         model.addElement("<HTML><U>List View (Current Following)</HTML>");
-        for (int i = 0; i < user.getFollowing().size(); i++)
+        for (User i: user.getFollowing())
         {
-            model.addElement(user.getFollowing().get(i));
+            model.addElement(i.getID());
         }
         System.out.println("User " + user + " opened.");
     }
