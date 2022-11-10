@@ -13,13 +13,11 @@ public class PositivePercentageVisitor implements Visitor{
         messagesTotal += messages.size();
         for (String i: messages)
         {
-            boolean isPositive = false;
             for (String k: keyWords)
             {
                 if (i.contains(k))
                 {
                     numPositiveMessages++;
-                    isPositive = true;
                     break;
                 }
             }
