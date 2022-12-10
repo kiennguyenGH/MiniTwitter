@@ -34,6 +34,10 @@
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
+                      <Component id="lastUpdated" max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
                       <Component id="userInfo" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -77,11 +81,13 @@
                       <Component id="tfTweetMessage" alignment="3" min="-2" pref="46" max="-2" attributes="0"/>
                       <Component id="btnPostTweet" alignment="3" pref="46" max="32767" attributes="0"/>
                   </Group>
-                  <Component id="RefreshButton" alignment="1" max="32767" attributes="0"/>
+                  <Component id="RefreshButton" alignment="0" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jScrollPane2" pref="146" max="32767" attributes="0"/>
+              <Component id="lastUpdated" min="-2" pref="26" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
+              <Component id="jScrollPane2" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -126,6 +132,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="TextArea - Tweet Message"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tfTweetMessageActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnPostTweet">
       <Properties>
@@ -163,6 +172,8 @@
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="userInfo">
+    </Component>
+    <Component class="javax.swing.JLabel" name="lastUpdated">
     </Component>
   </SubComponents>
 </Form>
