@@ -3,6 +3,7 @@ import javax.swing.tree.DefaultMutableTreeNode;
 
 public class User extends DefaultMutableTreeNode implements CompositeUser, Subject, Observer, Visitable{
     
+    long timeCreated;
     private String ID;
     private ArrayList<Observer> observers = new ArrayList<Observer>();
     private ArrayList<User> following = new ArrayList<User>();
@@ -16,6 +17,12 @@ public class User extends DefaultMutableTreeNode implements CompositeUser, Subje
         this.root = root;
         following.add(this);
         observers.add(this);
+        timeCreated = System.currentTimeMillis();
+    }
+    
+    public long getTimeCreated()
+    {
+        return timeCreated;
     }
     
     public ArrayList<User> getFollowing()
